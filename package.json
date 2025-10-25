@@ -2,14 +2,17 @@
   "name": "me",
   "private": true,
   "type": "module",
+  "homepage": "https://samdelaney.github.io/me/",
   "scripts": {
     "dev": "vite dev --port 3000",
-    "build": "vite build",
+    "build": "vite build && pnpm run postbuild",
+    "postbuild": "node -e \"const fs = require('fs'); const path = require('path'); const shellIndex = path.join('dist', 'client', '_shell', 'index.html'); const clientIndex = path.join('dist', 'client', 'index.html'); const client404 = path.join('dist', 'client', '404.html'); if (fs.existsSync(shellIndex)) { fs.copyFileSync(shellIndex, clientIndex); fs.copyFileSync(shellIndex, client404); console.log('Copied index.html from _shell to client root and created 404.html'); }\"",
     "serve": "vite preview",
     "test": "vitest run",
     "lint": "eslint",
     "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "check": "prettier --write . && eslint --fix",
+    "deploy": "pnpm run build && gh-pages -d dist/client"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
@@ -34,6 +37,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "gh-pages": "^6.3.0",
     "jsdom": "^27.0.0",
     "prettier": "^3.5.3",
     "typescript": "^5.7.2",
