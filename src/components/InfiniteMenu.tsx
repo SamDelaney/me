@@ -830,13 +830,50 @@ class InfiniteGridMenu {
     canvas.width = this.atlasSize * cellSize;
     canvas.height = this.atlasSize * cellSize;
 
+    // Fill with a default color while images load
+    ctx.fillStyle = '#333333';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
     Promise.all(
       this.items.map(
         item =>
-          new Promise<HTMLImageElement>(resolve => {
+          new Promise<HTMLImageElement>((resolve) => {
             const img = new Image();
-            img.crossOrigin = 'anonymous';
+            
+            // Handle both local and remote images
+            if (item.image.startsWith('http')) {
+              img.crossOrigin = 'anonymous';
+            }
+            
             img.onload = () => resolve(img);
+            img.onerror = (error) => {
+              console.warn(`Failed to load image: ${item.image}`, error);
+              // Create a fallback colored rectangle
+              const fallbackCanvas = document.createElement('canvas');
+              fallbackCanvas.width = cellSize;
+              fallbackCanvas.height = cellSize;
+              const fallbackCtx = fallbackCanvas.getContext('2d')!;
+              
+              // Create a gradient or solid color as fallback
+              const gradient = fallbackCtx.createRadialGradient(cellSize/2, cellSize/2, 0, cellSize/2, cellSize/2, cellSize/2);
+              gradient.addColorStop(0, '#4CAF50');
+              gradient.addColorStop(1, '#2E7D32');
+              fallbackCtx.fillStyle = gradient;
+              fallbackCtx.fillRect(0, 0, cellSize, cellSize);
+              
+              // Add text if available
+              if (item.title) {
+                fallbackCtx.fillStyle = 'white';
+                fallbackCtx.font = '24px Arial';
+                fallbackCtx.textAlign = 'center';
+                fallbackCtx.fillText(item.title, cellSize/2, cellSize/2);
+              }
+              
+              const fallbackImg = new Image();
+              fallbackImg.onload = () => resolve(fallbackImg);
+              fallbackImg.src = fallbackCanvas.toDataURL();
+            };
+            
             img.src = item.image;
           })
       )
@@ -847,6 +884,12 @@ class InfiniteGridMenu {
         ctx.drawImage(img, x, y, cellSize, cellSize);
       });
 
+      gl.bindTexture(gl.TEXTURE_2D, this.tex);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
+      gl.generateMipmap(gl.TEXTURE_2D);
+    }).catch(error => {
+      console.error('Error loading textures:', error);
+      // Upload the default canvas even if some images failed
       gl.bindTexture(gl.TEXTURE_2D, this.tex);
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, canvas);
       gl.generateMipmap(gl.TEXTURE_2D);
@@ -1116,7 +1159,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
           left-[1.6em]
           top-1/2
           transform
-          translate-x-[20%]
+          translate-x-[40%]
           -translate-y-1/2
           transition-all
           ease-[cubic-bezier(0.25,0.1,0.25,1.0)]
@@ -1143,7 +1186,7 @@ const InfiniteMenu: FC<InfiniteMenuProps> = ({ items = [] }) => {
           ${
             isMoving
               ? 'opacity-0 pointer-events-none duration-[100ms] translate-x-[-60%] -translate-y-1/2'
-              : 'opacity-100 pointer-events-auto duration-[500ms] translate-x-[-90%] -translate-y-1/2'
+              : 'opacity-100 pointer-events-auto duration-[500ms] translate-x-[-60%] -translate-y-1/2'
           }
         `}
           >

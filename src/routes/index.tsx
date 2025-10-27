@@ -4,28 +4,35 @@ import InfiniteMenu from '@/components/InfiniteMenu'
 export const Route = createFileRoute('/')({ component: App })
 
 function App() {
+  // Use a function to get the correct image path based on environment
+  const getImagePath = (imageName: string) => {
+    // For local development, use without base path
+    // For production (GitHub Pages), use with base path
+    const basePath = '/me';
+    return `${basePath}/${imageName}`;
+  };
 
 const items = [
   {
-    image: 'https://picsum.photos/300/300',
-    link: 'https://google.com/',
-    title: 'Item 1',
-    description: 'This is pretty cool, right?'
+    image: getImagePath('sundial-logo.svg'),
+    link: 'https://sundialprotocol.com/',
+    title: 'Sundial',
+    description: 'Core Tech Lead'
   },
   {
-    image: 'https://picsum.photos/400/400',
-    link: 'https://google.com/',
-    title: 'Item 2',
-    description: 'This is pretty cool, right?'
+    image: getImagePath('ascent-logo.png'),
+    link: 'https://ascentrivals.com/',
+    title: 'Ascent Rivals',
+    description: 'Web & Smart Contract Engineer'
   },
   {
-    image: 'https://picsum.photos/500/500',
-    link: 'https://google.com/',
-    title: 'Item 3',
-    description: 'This is pretty cool, right?'
+    image: getImagePath('grabbit-logo.svg'),
+    link: 'https://grabbit.market',
+    title: 'Grabbit Market',
+    description: 'Founder & Principal Engineer'
   },
   {
-    image: 'https://picsum.photos/600/600',
+    image: getImagePath('sundial-logo.svg'),
     link: 'https://google.com/',
     title: 'Item 4',
     description: 'This is pretty cool, right?'
