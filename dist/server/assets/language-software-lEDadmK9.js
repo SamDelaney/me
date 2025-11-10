@@ -1,0 +1,59 @@
+import { jsx, jsxs } from "react/jsx-runtime";
+function LanguageSoftware() {
+  const projects = [{
+    name: "Rust-based JSON Parser",
+    description: "High-performance JSON parser written in Rust, 10x faster than standard parsers with zero-copy deserialization.",
+    technologies: ["Rust", "SIMD", "Benchmarking", "Memory Management"],
+    performance: "500MB/s parsing speed, 0 allocations",
+    downloads: "50K+ crate downloads",
+    github: "https://github.com/example/fast-json"
+  }, {
+    name: "WebAssembly Compiler Toolkit",
+    description: "Complete toolkit for compiling custom DSLs to WebAssembly with LLVM backend integration.",
+    technologies: ["LLVM", "WebAssembly", "C++", "Parser Generators"],
+    performance: "Sub-100ms compilation, 95% size reduction",
+    downloads: "10K+ GitHub stars",
+    github: "https://github.com/example/wasm-toolkit"
+  }, {
+    name: "Go Microservice Framework",
+    description: "Lightweight framework for building distributed microservices with automatic service discovery and load balancing.",
+    technologies: ["Go", "gRPC", "Kubernetes", "Service Mesh"],
+    performance: "1M+ RPS, <1ms latency",
+    downloads: "25K+ go modules",
+    github: "https://github.com/example/micro-go"
+  }, {
+    name: "Python AST Transformer",
+    description: "Advanced code transformation tool that optimizes Python bytecode at compile time using AST manipulation.",
+    technologies: ["Python", "AST", "Bytecode", "Static Analysis"],
+    performance: "30% performance improvement, 100% compatibility",
+    downloads: "100K+ PyPI downloads",
+    github: "https://github.com/example/ast-optimizer"
+  }];
+  return /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center min-h-screen bg-gradient-to-br from-zinc-800 to-black p-4 text-white", style: {
+    backgroundImage: "radial-gradient(50% 50% at 20% 60%, #1a1a1a 0%, #0a0a0a 50%, #000000 100%)"
+  }, children: /* @__PURE__ */ jsxs("div", { className: "w-full max-w-5xl p-8 rounded-xl backdrop-blur-md bg-black/50 shadow-xl border-8 border-black/10", children: [
+    /* @__PURE__ */ jsx("h1", { className: "text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent", children: "Language Software Projects" }),
+    /* @__PURE__ */ jsx("p", { className: "text-lg text-center text-gray-300 mb-8", children: "Compilers, parsers, and language tools for high-performance computing" }),
+    /* @__PURE__ */ jsx("div", { className: "grid gap-6", children: projects.map((project) => /* @__PURE__ */ jsxs("div", { className: "bg-white/5 border border-white/20 rounded-xl p-6 backdrop-blur-sm", children: [
+      /* @__PURE__ */ jsxs("div", { className: "flex justify-between items-start mb-4", children: [
+        /* @__PURE__ */ jsx("h2", { className: "text-2xl font-bold text-white", children: project.name }),
+        /* @__PURE__ */ jsx("a", { href: project.github, className: "px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors", target: "_blank", rel: "noopener noreferrer", children: "View Code" })
+      ] }),
+      /* @__PURE__ */ jsx("p", { className: "text-gray-300 mb-4 leading-relaxed", children: project.description }),
+      /* @__PURE__ */ jsxs("div", { className: "grid md:grid-cols-2 gap-4 mb-4", children: [
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("p", { className: "text-blue-300 font-medium mb-1", children: "Performance:" }),
+          /* @__PURE__ */ jsx("p", { className: "text-gray-400", children: project.performance })
+        ] }),
+        /* @__PURE__ */ jsxs("div", { children: [
+          /* @__PURE__ */ jsx("p", { className: "text-purple-300 font-medium mb-1", children: "Adoption:" }),
+          /* @__PURE__ */ jsx("p", { className: "text-gray-400", children: project.downloads })
+        ] })
+      ] }),
+      /* @__PURE__ */ jsx("div", { className: "flex flex-wrap gap-2", children: project.technologies.map((tech) => /* @__PURE__ */ jsx("span", { className: "px-3 py-1 bg-blue-500/20 text-blue-300 rounded-full text-sm border border-blue-400/30", children: tech }, tech)) })
+    ] }, project.name)) })
+  ] }) });
+}
+export {
+  LanguageSoftware as component
+};

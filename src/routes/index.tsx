@@ -32,10 +32,16 @@ function App() {
       description: 'Founder & Principal Engineer',
     },
     {
+      image: getImagePath('paratext.webp'),
+      link: 'https://paratext.org/',
+      title: 'Paratext',
+      description: 'Software Developer',
+    },
+    {
       image: getImagePath('flex.webp'),
-      link: 'https://google.com/',
-      title: 'Fieldworks',
-      description: 'Software Intern',
+      link: 'https://software.sil.org/fieldworks/',
+      title: 'FieldWorks',
+      description: 'Software Developer',
     },
   ]
 

@@ -2,13 +2,14 @@ import { Link, createRootRoute, HeadContent, Scripts, createFileRoute, lazyRoute
 import { jsxs, Fragment, jsx } from "react/jsx-runtime";
 import { useState } from "react";
 import { Menu, X, Home, SquareFunction, Network, StickyNote, ChevronDown, ChevronRight } from "lucide-react";
-import { c as createServerFn, a as createServerRpc, j as json } from "../server.js";
-import fs from "node:fs";
+import { j as json } from "../server.js";
+import "node:async_hooks";
+import "@tanstack/react-router/ssr/server";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [groupedExpanded, setGroupedExpanded] = useState({});
   return /* @__PURE__ */ jsxs(Fragment, { children: [
-    /* @__PURE__ */ jsxs("header", { className: "p-4 flex items-center bg-gray-800 text-white shadow-lg", children: [
+    /* @__PURE__ */ jsxs("header", { className: "relative z-50 p-4 flex items-center bg-gray-800 text-white shadow-lg", children: [
       /* @__PURE__ */ jsx(
         "button",
         {
@@ -56,7 +57,7 @@ function Header() {
             /* @__PURE__ */ jsxs(
               Link,
               {
-                to: "/demo/start/server-funcs",
+                to: "/writings",
                 onClick: () => setIsOpen(false),
                 className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                 activeProps: {
@@ -71,7 +72,7 @@ function Header() {
             /* @__PURE__ */ jsxs(
               Link,
               {
-                to: "/demo/start/api-request",
+                to: "/qualifications",
                 onClick: () => setIsOpen(false),
                 className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                 activeProps: {
@@ -87,7 +88,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/demo/start/ssr",
+                  to: "/work",
                   onClick: () => setIsOpen(false),
                   className: "flex-1 flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -115,7 +116,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/demo/start/ssr/spa-mode",
+                  to: "/work/blockchain",
                   onClick: () => setIsOpen(false),
                   className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -130,7 +131,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/demo/start/ssr/full-ssr",
+                  to: "/work/blockchain",
                   onClick: () => setIsOpen(false),
                   className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -145,7 +146,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/demo/start/ssr/data-only",
+                  to: "/work/language-software",
                   onClick: () => setIsOpen(false),
                   className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -164,7 +165,7 @@ function Header() {
     )
   ] });
 }
-const appCss = "/me/assets/styles-9_6Vv-uc.css";
+const appCss = "/me/assets/styles-zBCbQ_Aq.css";
 const Route$8 = createRootRoute({
   head: () => ({
     meta: [
@@ -198,145 +199,93 @@ function RootDocument({ children }) {
     ] })
   ] });
 }
-const $$splitComponentImporter$6 = () => import("./index-Buz5WAL6.js");
-const Route$7 = createFileRoute("/")({
+const $$splitComponentImporter$6 = () => import("./writings-BrSmi35u.js");
+const Route$7 = createFileRoute("/writings")({
   component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-const $$splitComponentImporter$5 = () => import("./start.server-funcs-CEGQsrHR.js");
-const TODOS_FILE = "todos.json";
-async function readTodos() {
-  return JSON.parse(await fs.promises.readFile(TODOS_FILE, "utf-8").catch(() => JSON.stringify([{
-    id: 1,
-    name: "Get groceries"
-  }, {
-    id: 2,
-    name: "Buy a new phone"
-  }], null, 2)));
-}
-const getTodos_createServerFn_handler = createServerRpc("c9d51a5243700889c80f82ed57a4ce74b25f188e5ebd534c9c64965dc44e8e8d", (opts, signal) => {
-  return getTodos.__executeServer(opts, signal);
+const $$splitComponentImporter$5 = () => import("./work-DtgufYS1.js");
+const Route$6 = createFileRoute("/work")({
+  component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
-const getTodos = createServerFn({
-  method: "GET"
-}).handler(getTodos_createServerFn_handler, async () => await readTodos());
-const Route$6 = createFileRoute("/demo/start/server-funcs")({
-  component: lazyRouteComponent($$splitComponentImporter$5, "component"),
-  loader: async () => await getTodos()
-});
-const $$splitComponentImporter$4 = () => import("./start.api-request-DhPN1_Dc.js");
-const Route$5 = createFileRoute("/demo/start/api-request")({
+const $$splitComponentImporter$4 = () => import("./qualifications-DqWw5Usr.js");
+const Route$5 = createFileRoute("/qualifications")({
   component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
-const Route$4 = createFileRoute("/demo/api/names")({
+const $$splitComponentImporter$3 = () => import("./index-DMhiiHWB.js");
+const Route$4 = createFileRoute("/")({
+  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+});
+const $$splitComponentImporter$2 = () => import("./language-software-lEDadmK9.js");
+const Route$3 = createFileRoute("/work/language-software")({
+  component: lazyRouteComponent($$splitComponentImporter$2, "component")
+});
+const $$splitComponentImporter$1 = () => import("./cryptography-BbQ7RJZo.js");
+const Route$2 = createFileRoute("/work/cryptography")({
+  component: lazyRouteComponent($$splitComponentImporter$1, "component")
+});
+const $$splitComponentImporter = () => import("./blockchain-BEc22Sl8.js");
+const Route$1 = createFileRoute("/work/blockchain")({
+  component: lazyRouteComponent($$splitComponentImporter, "component")
+});
+const Route = createFileRoute("/work/api/names")({
   server: {
     handlers: {
       GET: () => json(["Alice", "Bob", "Charlie"])
     }
   }
 });
-const $$splitComponentImporter$3 = () => import("./start.ssr.index-BmCCCK3g.js");
-const Route$3 = createFileRoute("/demo/start/ssr/")({
-  component: lazyRouteComponent($$splitComponentImporter$3, "component")
+const WritingsRoute = Route$7.update({
+  id: "/writings",
+  path: "/writings",
+  getParentRoute: () => Route$8
 });
-const $$splitComponentImporter$2 = () => import("./start.ssr.spa-mode-DKE-AfXl.js");
-const Route$2 = createFileRoute("/demo/start/ssr/spa-mode")({
-  ssr: false,
-  component: lazyRouteComponent($$splitComponentImporter$2, "component")
+const WorkRoute = Route$6.update({
+  id: "/work",
+  path: "/work",
+  getParentRoute: () => Route$8
 });
-const getPunkSongs_createServerFn_handler = createServerRpc("f74da881407a186b78a7af058df21dafb0126eb11e5a4d54fd322e8feb5038f1", (opts, signal) => {
-  return getPunkSongs.__executeServer(opts, signal);
+const QualificationsRoute = Route$5.update({
+  id: "/qualifications",
+  path: "/qualifications",
+  getParentRoute: () => Route$8
 });
-const getPunkSongs = createServerFn({
-  method: "GET"
-}).handler(getPunkSongs_createServerFn_handler, async () => [{
-  id: 1,
-  name: "Teenage Dirtbag",
-  artist: "Wheatus"
-}, {
-  id: 2,
-  name: "Smells Like Teen Spirit",
-  artist: "Nirvana"
-}, {
-  id: 3,
-  name: "The Middle",
-  artist: "Jimmy Eat World"
-}, {
-  id: 4,
-  name: "My Own Worst Enemy",
-  artist: "Lit"
-}, {
-  id: 5,
-  name: "Fat Lip",
-  artist: "Sum 41"
-}, {
-  id: 6,
-  name: "All the Small Things",
-  artist: "blink-182"
-}, {
-  id: 7,
-  name: "Beverly Hills",
-  artist: "Weezer"
-}]);
-const $$splitComponentImporter$1 = () => import("./start.ssr.full-ssr-BL5SG67r.js");
-const Route$1 = createFileRoute("/demo/start/ssr/full-ssr")({
-  component: lazyRouteComponent($$splitComponentImporter$1, "component"),
-  loader: async () => await getPunkSongs()
-});
-const $$splitComponentImporter = () => import("./start.ssr.data-only-BMs9SA93.js");
-const Route = createFileRoute("/demo/start/ssr/data-only")({
-  ssr: "data-only",
-  component: lazyRouteComponent($$splitComponentImporter, "component"),
-  loader: async () => await getPunkSongs()
-});
-const IndexRoute = Route$7.update({
+const IndexRoute = Route$4.update({
   id: "/",
   path: "/",
   getParentRoute: () => Route$8
 });
-const DemoStartServerFuncsRoute = Route$6.update({
-  id: "/demo/start/server-funcs",
-  path: "/demo/start/server-funcs",
-  getParentRoute: () => Route$8
+const WorkLanguageSoftwareRoute = Route$3.update({
+  id: "/language-software",
+  path: "/language-software",
+  getParentRoute: () => WorkRoute
 });
-const DemoStartApiRequestRoute = Route$5.update({
-  id: "/demo/start/api-request",
-  path: "/demo/start/api-request",
-  getParentRoute: () => Route$8
+const WorkCryptographyRoute = Route$2.update({
+  id: "/cryptography",
+  path: "/cryptography",
+  getParentRoute: () => WorkRoute
 });
-const DemoApiNamesRoute = Route$4.update({
-  id: "/demo/api/names",
-  path: "/demo/api/names",
-  getParentRoute: () => Route$8
+const WorkBlockchainRoute = Route$1.update({
+  id: "/blockchain",
+  path: "/blockchain",
+  getParentRoute: () => WorkRoute
 });
-const DemoStartSsrIndexRoute = Route$3.update({
-  id: "/demo/start/ssr/",
-  path: "/demo/start/ssr/",
-  getParentRoute: () => Route$8
+const WorkApiNamesRoute = Route.update({
+  id: "/api/names",
+  path: "/api/names",
+  getParentRoute: () => WorkRoute
 });
-const DemoStartSsrSpaModeRoute = Route$2.update({
-  id: "/demo/start/ssr/spa-mode",
-  path: "/demo/start/ssr/spa-mode",
-  getParentRoute: () => Route$8
-});
-const DemoStartSsrFullSsrRoute = Route$1.update({
-  id: "/demo/start/ssr/full-ssr",
-  path: "/demo/start/ssr/full-ssr",
-  getParentRoute: () => Route$8
-});
-const DemoStartSsrDataOnlyRoute = Route.update({
-  id: "/demo/start/ssr/data-only",
-  path: "/demo/start/ssr/data-only",
-  getParentRoute: () => Route$8
-});
+const WorkRouteChildren = {
+  WorkBlockchainRoute,
+  WorkCryptographyRoute,
+  WorkLanguageSoftwareRoute,
+  WorkApiNamesRoute
+};
+const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren);
 const rootRouteChildren = {
   IndexRoute,
-  DemoApiNamesRoute,
-  DemoStartApiRequestRoute,
-  DemoStartServerFuncsRoute,
-  DemoStartSsrDataOnlyRoute,
-  DemoStartSsrFullSsrRoute,
-  DemoStartSsrSpaModeRoute,
-  DemoStartSsrIndexRoute
+  QualificationsRoute,
+  WorkRoute: WorkRouteWithChildren,
+  WritingsRoute
 };
 const routeTree = Route$8._addFileChildren(rootRouteChildren)._addFileTypes();
 const getRouter = () => {
@@ -346,14 +295,6 @@ const getRouter = () => {
     defaultPreloadStaleTime: 0
   });
 };
-const router = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  getRouter
-}, Symbol.toStringTag, { value: "Module" }));
 export {
-  Route$6 as R,
-  Route$1 as a,
-  Route as b,
-  getPunkSongs as g,
-  router as r
+  getRouter
 };
