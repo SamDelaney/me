@@ -1,5 +1,13 @@
 import { jsx, jsxs } from "react/jsx-runtime";
-import { Link } from "@tanstack/react-router";
+import { useMatches, Outlet, Link } from "@tanstack/react-router";
+function WorkLayout() {
+  const matches = useMatches();
+  const isExactMatch = matches.length === 2 && matches[1].id === "/work";
+  if (isExactMatch) {
+    return /* @__PURE__ */ jsx(MyWork, {});
+  }
+  return /* @__PURE__ */ jsx(Outlet, {});
+}
 function MyWork() {
   const projects = [{
     name: "Decentralized Storage Protocol",
@@ -7,21 +15,21 @@ function MyWork() {
     technologies: ["Rust", "IPFS", "Ethereum", "WebAssembly"],
     category: "blockchain",
     status: "Production",
-    link: "/demo/start/ssr/spa-mode"
+    link: "/work/blockchain"
   }, {
     name: "Multi-Language Code Compiler",
     description: "Developed a cloud-native compiler service supporting 15+ programming languages with advanced optimization algorithms.",
     technologies: ["Go", "LLVM", "Kubernetes", "gRPC"],
     category: "language-software",
     status: "Active Development",
-    link: "/demo/start/ssr/full-ssr"
+    link: "/work/language-software"
   }, {
     name: "Zero-Knowledge Authentication System",
     description: "Implemented a privacy-preserving authentication protocol using zk-SNARKs, enabling anonymous verification.",
     technologies: ["Circom", "Solidity", "TypeScript", "Node.js"],
     category: "cryptography",
     status: "Research",
-    link: "/demo/start/ssr/data-only"
+    link: "/work/cryptography"
   }];
   return /* @__PURE__ */ jsx("div", { className: "flex items-center justify-center min-h-screen bg-gradient-to-br from-zinc-900 to-black p-4 text-white", style: {
     backgroundImage: "radial-gradient(50% 50% at 20% 60%, #1a1a1a 0%, #0a0a0a 50%, #000000 100%)"
@@ -40,5 +48,5 @@ function MyWork() {
   ] }) });
 }
 export {
-  MyWork as component
+  WorkLayout as component
 };

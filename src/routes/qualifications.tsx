@@ -20,19 +20,9 @@ function Qualifications() {
 
   const certifications = [
     {
-      name: 'Certified Blockchain Developer',
-      issuer: 'Blockchain Training Alliance',
-      year: '2023',
-    },
-    {
-      name: 'AWS Solutions Architect Professional',
-      issuer: 'Amazon Web Services',
-      year: '2022',
-    },
-    {
-      name: 'Kubernetes Application Developer',
-      issuer: 'Cloud Native Computing Foundation',
-      year: '2021',
+      name: 'Certificate in Computer Programming',
+      issuer: 'Cascadia Community College',
+      year: '2015',
     },
   ]
 
@@ -117,7 +107,7 @@ function Qualifications() {
         </section>
 
         {/* Skills Section */}
-        <section>
+        {/*<section>
           <h2 className="text-2xl font-semibold mb-4 text-purple-300">
             Technical Skills
           </h2>
@@ -143,7 +133,7 @@ function Qualifications() {
               </div>
             ))}
           </div>
-        </section>
+        </section>*/}
       </div>
     </div>
   )

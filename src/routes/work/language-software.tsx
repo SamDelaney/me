@@ -7,41 +7,32 @@ export const Route = createFileRoute('/work/language-software')({
 function LanguageSoftware() {
   const projects = [
     {
-      name: 'Rust-based JSON Parser',
+      name: 'Paratext',
       description:
-        'High-performance JSON parser written in Rust, 10x faster than standard parsers with zero-copy deserialization.',
-      technologies: ['Rust', 'SIMD', 'Benchmarking', 'Memory Management'],
-      performance: '500MB/s parsing speed, 0 allocations',
-      downloads: '50K+ crate downloads',
-      github: 'https://github.com/example/fast-json',
+        'The premier tool for Bible translation, used by thousands of translators worldwide to create and manage scriptural texts.',
+      technologies: ['C#', 'HTML', 'XSLT'],
+      role: 'Language Software Developer',
+      dates: '2020 - 2021',
+      site: 'https://paratext.org',
     },
     {
-      name: 'WebAssembly Compiler Toolkit',
+      name: 'TheCombine',
       description:
-        'Complete toolkit for compiling custom DSLs to WebAssembly with LLVM backend integration.',
-      technologies: ['LLVM', 'WebAssembly', 'C++', 'Parser Generators'],
-      performance: 'Sub-100ms compilation, 95% size reduction',
-      downloads: '10K+ GitHub stars',
-      github: 'https://github.com/example/wasm-toolkit',
+        'A web-based platform for collaborative RWC (rapid word collection), enhancing teamwork among translators & facilitating fast data cleanup.',
+      technologies: ['TypeScript', 'React', 'Node.js', 'MongoDB'],
+      role: 'Project Manager & Lead Developer',
+      dates: '2019',
+      site: 'https://software.sil.org/thecombine/',
     },
     {
-      name: 'Go Microservice Framework',
+      name: 'FieldWorks',
       description:
-        'Lightweight framework for building distributed microservices with automatic service discovery and load balancing.',
-      technologies: ['Go', 'gRPC', 'Kubernetes', 'Service Mesh'],
-      performance: '1M+ RPS, <1ms latency',
-      downloads: '25K+ go modules',
-      github: 'https://github.com/example/micro-go',
-    },
-    {
-      name: 'Python AST Transformer',
-      description:
-        'Advanced code transformation tool that optimizes Python bytecode at compile time using AST manipulation.',
-      technologies: ['Python', 'AST', 'Bytecode', 'Static Analysis'],
-      performance: '30% performance improvement, 100% compatibility',
-      downloads: '100K+ PyPI downloads',
-      github: 'https://github.com/example/ast-optimizer',
-    },
+        'A comprehensive suite of tools for linguistic analysis, supporting complex writing systems and linguistic data management.',
+      technologies: ['C#', 'HTML', 'XSLT'],
+      role: 'Software Developer',
+      dates: '2018',
+      site: 'https://software.sil.org/fieldworks/',
+    }
   ]
 
   return (
@@ -54,10 +45,11 @@ function LanguageSoftware() {
     >
       <div className="w-full max-w-5xl p-8 rounded-xl backdrop-blur-md bg-black/50 shadow-xl border-8 border-black/10">
         <h1 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
-          Language Software Projects
+          Work in Language Software
         </h1>
         <p className="text-lg text-center text-gray-300 mb-8">
-          Compilers, parsers, and language tools for high-performance computing
+          Tools I have developed as part of SIL or my own work to support language
+          documentation and Bible translation efforts.
         </p>
 
         <div className="grid gap-6">
@@ -71,12 +63,12 @@ function LanguageSoftware() {
                   {project.name}
                 </h2>
                 <a
-                  href={project.github}
+                  href={project.site}
                   className="px-3 py-1 bg-gray-700 hover:bg-gray-600 text-white rounded-lg text-sm transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  View Code
+                  Check it out
                 </a>
               </div>
 
@@ -86,12 +78,12 @@ function LanguageSoftware() {
 
               <div className="grid md:grid-cols-2 gap-4 mb-4">
                 <div>
-                  <p className="text-blue-300 font-medium mb-1">Performance:</p>
-                  <p className="text-gray-400">{project.performance}</p>
+                  <p className="text-purple-300 font-medium mb-1">Title:</p>
+                  <p className="text-gray-400">{project.role}</p>
                 </div>
                 <div>
-                  <p className="text-purple-300 font-medium mb-1">Adoption:</p>
-                  <p className="text-gray-400">{project.downloads}</p>
+                  <p className="text-purple-300 font-medium mb-1">When:</p>
+                  <p className="text-gray-400">{project.dates}</p>
                 </div>
               </div>
 

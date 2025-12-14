@@ -1,5 +1,6 @@
 import { jsx, jsxs } from "react/jsx-runtime";
 function BlockchainWork() {
+  console.log("BlockchainWork component is rendering!");
   const projects = [{
     name: "DeFi Yield Aggregator",
     description: "Built a smart contract system that automatically finds the highest yield opportunities across multiple DeFi protocols.",

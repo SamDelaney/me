@@ -2,9 +2,6 @@ import { Link, createRootRoute, HeadContent, Scripts, createFileRoute, lazyRoute
 import { jsxs, Fragment, jsx } from "react/jsx-runtime";
 import { useState } from "react";
 import { Menu, X, Home, SquareFunction, Network, StickyNote, ChevronDown, ChevronRight } from "lucide-react";
-import { j as json } from "../server.js";
-import "node:async_hooks";
-import "@tanstack/react-router/ssr/server";
 function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [groupedExpanded, setGroupedExpanded] = useState({});
@@ -131,7 +128,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/work/blockchain",
+                  to: "/work/language-software",
                   onClick: () => setIsOpen(false),
                   className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -146,7 +143,7 @@ function Header() {
               /* @__PURE__ */ jsxs(
                 Link,
                 {
-                  to: "/work/language-software",
+                  to: "/work/cryptography",
                   onClick: () => setIsOpen(false),
                   className: "flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2",
                   activeProps: {
@@ -165,8 +162,8 @@ function Header() {
     )
   ] });
 }
-const appCss = "/me/assets/styles-zBCbQ_Aq.css";
-const Route$8 = createRootRoute({
+const appCss = "/me/assets/styles-DU8axZM5.css";
+const Route$7 = createRootRoute({
   head: () => ({
     meta: [
       {
@@ -200,85 +197,72 @@ function RootDocument({ children }) {
   ] });
 }
 const $$splitComponentImporter$6 = () => import("./writings-BrSmi35u.js");
-const Route$7 = createFileRoute("/writings")({
+const Route$6 = createFileRoute("/writings")({
   component: lazyRouteComponent($$splitComponentImporter$6, "component")
 });
-const $$splitComponentImporter$5 = () => import("./work-DtgufYS1.js");
-const Route$6 = createFileRoute("/work")({
+const $$splitComponentImporter$5 = () => import("./work-cAYjYwwc.js");
+const Route$5 = createFileRoute("/work")({
   component: lazyRouteComponent($$splitComponentImporter$5, "component")
 });
 const $$splitComponentImporter$4 = () => import("./qualifications-DqWw5Usr.js");
-const Route$5 = createFileRoute("/qualifications")({
+const Route$4 = createFileRoute("/qualifications")({
   component: lazyRouteComponent($$splitComponentImporter$4, "component")
 });
 const $$splitComponentImporter$3 = () => import("./index-DMhiiHWB.js");
-const Route$4 = createFileRoute("/")({
+const Route$3 = createFileRoute("/")({
   component: lazyRouteComponent($$splitComponentImporter$3, "component")
 });
 const $$splitComponentImporter$2 = () => import("./language-software-lEDadmK9.js");
-const Route$3 = createFileRoute("/work/language-software")({
+const Route$2 = createFileRoute("/work/language-software")({
   component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
 const $$splitComponentImporter$1 = () => import("./cryptography-BbQ7RJZo.js");
-const Route$2 = createFileRoute("/work/cryptography")({
+const Route$1 = createFileRoute("/work/cryptography")({
   component: lazyRouteComponent($$splitComponentImporter$1, "component")
 });
-const $$splitComponentImporter = () => import("./blockchain-BEc22Sl8.js");
-const Route$1 = createFileRoute("/work/blockchain")({
+const $$splitComponentImporter = () => import("./blockchain-DjkK5hcs.js");
+const Route = createFileRoute("/work/blockchain")({
   component: lazyRouteComponent($$splitComponentImporter, "component")
 });
-const Route = createFileRoute("/work/api/names")({
-  server: {
-    handlers: {
-      GET: () => json(["Alice", "Bob", "Charlie"])
-    }
-  }
-});
-const WritingsRoute = Route$7.update({
+const WritingsRoute = Route$6.update({
   id: "/writings",
   path: "/writings",
-  getParentRoute: () => Route$8
+  getParentRoute: () => Route$7
 });
-const WorkRoute = Route$6.update({
+const WorkRoute = Route$5.update({
   id: "/work",
   path: "/work",
-  getParentRoute: () => Route$8
+  getParentRoute: () => Route$7
 });
-const QualificationsRoute = Route$5.update({
+const QualificationsRoute = Route$4.update({
   id: "/qualifications",
   path: "/qualifications",
-  getParentRoute: () => Route$8
+  getParentRoute: () => Route$7
 });
-const IndexRoute = Route$4.update({
+const IndexRoute = Route$3.update({
   id: "/",
   path: "/",
-  getParentRoute: () => Route$8
+  getParentRoute: () => Route$7
 });
-const WorkLanguageSoftwareRoute = Route$3.update({
+const WorkLanguageSoftwareRoute = Route$2.update({
   id: "/language-software",
   path: "/language-software",
   getParentRoute: () => WorkRoute
 });
-const WorkCryptographyRoute = Route$2.update({
+const WorkCryptographyRoute = Route$1.update({
   id: "/cryptography",
   path: "/cryptography",
   getParentRoute: () => WorkRoute
 });
-const WorkBlockchainRoute = Route$1.update({
+const WorkBlockchainRoute = Route.update({
   id: "/blockchain",
   path: "/blockchain",
-  getParentRoute: () => WorkRoute
-});
-const WorkApiNamesRoute = Route.update({
-  id: "/api/names",
-  path: "/api/names",
   getParentRoute: () => WorkRoute
 });
 const WorkRouteChildren = {
   WorkBlockchainRoute,
   WorkCryptographyRoute,
-  WorkLanguageSoftwareRoute,
-  WorkApiNamesRoute
+  WorkLanguageSoftwareRoute
 };
 const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren);
 const rootRouteChildren = {
@@ -287,7 +271,7 @@ const rootRouteChildren = {
   WorkRoute: WorkRouteWithChildren,
   WritingsRoute
 };
-const routeTree = Route$8._addFileChildren(rootRouteChildren)._addFileTypes();
+const routeTree = Route$7._addFileChildren(rootRouteChildren)._addFileTypes();
 const getRouter = () => {
   return createRouter({
     routeTree,

@@ -9,22 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as WritingsRouteImport } from './routes/writings'
 import { Route as WorkRouteImport } from './routes/work'
+import { Route as ThoughtsRouteImport } from './routes/thoughts'
 import { Route as QualificationsRouteImport } from './routes/qualifications'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkLanguageSoftwareRouteImport } from './routes/work/language-software'
 import { Route as WorkCryptographyRouteImport } from './routes/work/cryptography'
 import { Route as WorkBlockchainRouteImport } from './routes/work/blockchain'
 
-const WritingsRoute = WritingsRouteImport.update({
-  id: '/writings',
-  path: '/writings',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const WorkRoute = WorkRouteImport.update({
   id: '/work',
   path: '/work',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ThoughtsRoute = ThoughtsRouteImport.update({
+  id: '/thoughts',
+  path: '/thoughts',
   getParentRoute: () => rootRouteImport,
 } as any)
 const QualificationsRoute = QualificationsRouteImport.update({
@@ -56,8 +56,8 @@ const WorkBlockchainRoute = WorkBlockchainRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/qualifications': typeof QualificationsRoute
+  '/thoughts': typeof ThoughtsRoute
   '/work': typeof WorkRouteWithChildren
-  '/writings': typeof WritingsRoute
   '/work/blockchain': typeof WorkBlockchainRoute
   '/work/cryptography': typeof WorkCryptographyRoute
   '/work/language-software': typeof WorkLanguageSoftwareRoute
@@ -65,8 +65,8 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/qualifications': typeof QualificationsRoute
+  '/thoughts': typeof ThoughtsRoute
   '/work': typeof WorkRouteWithChildren
-  '/writings': typeof WritingsRoute
   '/work/blockchain': typeof WorkBlockchainRoute
   '/work/cryptography': typeof WorkCryptographyRoute
   '/work/language-software': typeof WorkLanguageSoftwareRoute
@@ -75,8 +75,8 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/qualifications': typeof QualificationsRoute
+  '/thoughts': typeof ThoughtsRoute
   '/work': typeof WorkRouteWithChildren
-  '/writings': typeof WritingsRoute
   '/work/blockchain': typeof WorkBlockchainRoute
   '/work/cryptography': typeof WorkCryptographyRoute
   '/work/language-software': typeof WorkLanguageSoftwareRoute
@@ -86,8 +86,8 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/qualifications'
+    | '/thoughts'
     | '/work'
-    | '/writings'
     | '/work/blockchain'
     | '/work/cryptography'
     | '/work/language-software'
@@ -95,8 +95,8 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/qualifications'
+    | '/thoughts'
     | '/work'
-    | '/writings'
     | '/work/blockchain'
     | '/work/cryptography'
     | '/work/language-software'
@@ -104,8 +104,8 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/qualifications'
+    | '/thoughts'
     | '/work'
-    | '/writings'
     | '/work/blockchain'
     | '/work/cryptography'
     | '/work/language-software'
@@ -114,24 +114,24 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   QualificationsRoute: typeof QualificationsRoute
+  ThoughtsRoute: typeof ThoughtsRoute
   WorkRoute: typeof WorkRouteWithChildren
-  WritingsRoute: typeof WritingsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/writings': {
-      id: '/writings'
-      path: '/writings'
-      fullPath: '/writings'
-      preLoaderRoute: typeof WritingsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/work': {
       id: '/work'
       path: '/work'
       fullPath: '/work'
       preLoaderRoute: typeof WorkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/thoughts': {
+      id: '/thoughts'
+      path: '/thoughts'
+      fullPath: '/thoughts'
+      preLoaderRoute: typeof ThoughtsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/qualifications': {
@@ -189,8 +189,8 @@ const WorkRouteWithChildren = WorkRoute._addFileChildren(WorkRouteChildren)
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   QualificationsRoute: QualificationsRoute,
+  ThoughtsRoute: ThoughtsRoute,
   WorkRoute: WorkRouteWithChildren,
-  WritingsRoute: WritingsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

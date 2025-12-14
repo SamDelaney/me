@@ -5,44 +5,14 @@ export const Route = createFileRoute('/work/blockchain')({
 })
 
 function BlockchainWork() {
-  console.log('BlockchainWork component is rendering!')
-
   const projects = [
     {
-      name: 'DeFi Yield Aggregator',
+      name: 'Grabbit',
       description:
-        'Built a smart contract system that automatically finds the highest yield opportunities across multiple DeFi protocols.',
-      technologies: ['Solidity', 'Hardhat', 'React', 'Web3.js'],
-      metrics: '$2.5M TVL, 500+ active users',
-      github: 'https://github.com/example/defi-aggregator',
-      live: 'https://yield-app.example.com',
-    },
-    {
-      name: 'NFT Marketplace with Royalties',
-      description:
-        'Created a gas-efficient NFT marketplace with automatic royalty distribution and batch minting capabilities.',
-      technologies: ['Solidity', 'IPFS', 'Next.js', 'ethers.js'],
-      metrics: '10,000+ NFTs traded, <$5 avg gas cost',
-      github: 'https://github.com/example/nft-marketplace',
-      live: 'https://nft-market.example.com',
-    },
-    {
-      name: 'Cross-Chain Bridge Protocol',
-      description:
-        'Implemented a trustless bridge for asset transfers between Ethereum and Polygon using merkle proofs.',
-      technologies: ['Solidity', 'Go', 'Merkle Trees', 'Polygon'],
-      metrics: '$500K+ bridged assets, 99.9% uptime',
-      github: 'https://github.com/example/bridge-protocol',
-      live: 'https://bridge.example.com',
-    },
-    {
-      name: 'DAO Governance Framework',
-      description:
-        'Developed a flexible governance system with delegation, proposal templates, and automated execution.',
-      technologies: ['Solidity', 'OpenZeppelin', 'TypeScript', 'Snapshot'],
-      metrics: '15+ DAOs using framework, 1000+ proposals',
-      github: 'https://github.com/example/dao-framework',
-      live: 'https://governance.example.com',
+        'A decentralized auction platform leveraging UTXO-parallelized smart contracts for secure, deterministic, scalable bidding.',
+      technologies: ['SvelteKit', 'Plutarch', 'Haskell', 'Cardano', 'Vercel', 'Supabase'],
+      github: 'https://github.com/ikigai-github/grabbit-smart-contracts',
+      live: 'https://grabbit.market',
     },
   ]
 
@@ -56,7 +26,7 @@ function BlockchainWork() {
     >
       <div className="w-full max-w-5xl p-8 rounded-xl backdrop-blur-md bg-black/50 shadow-xl border-8 border-black/10">
         <h1 className="text-4xl font-bold mb-4 text-center bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent">
-          Blockchain Projects
+          Work in Blockchain
         </h1>
         <p className="text-lg text-center text-gray-300 mb-8">
           Decentralized applications and smart contract systems
@@ -79,7 +49,7 @@ function BlockchainWork() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    GitHub
+                    Source
                   </a>
                   <a
                     href={project.live}
@@ -87,7 +57,7 @@ function BlockchainWork() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Live Demo
+                    Try it
                   </a>
                 </div>
               </div>
@@ -95,11 +65,6 @@ function BlockchainWork() {
               <p className="text-gray-300 mb-4 leading-relaxed">
                 {project.description}
               </p>
-
-              <div className="mb-4">
-                <p className="text-orange-300 font-medium mb-2">Key Metrics:</p>
-                <p className="text-gray-400">{project.metrics}</p>
-              </div>
 
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (

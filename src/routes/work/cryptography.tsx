@@ -7,44 +7,12 @@ export const Route = createFileRoute('/work/cryptography')({
 function CryptographyWork() {
   const projects = [
     {
-      name: 'Zero-Knowledge Voting System',
+      name: 'Aiken ZK Verifiers',
       description:
-        'Anonymous voting platform using zk-SNARKs that ensures ballot privacy while maintaining verifiable vote counting.',
-      technologies: ['Circom', 'Solidity', 'JavaScript', 'Merkle Trees'],
-      achievements: '100% voter privacy, publicly verifiable results',
-      impact: 'Used in 5+ DAO elections',
-      status: 'Production',
-      github: 'https://github.com/example/zk-voting',
-    },
-    {
-      name: 'Homomorphic Encryption Library',
-      description:
-        'High-performance library for fully homomorphic encryption enabling computation on encrypted data.',
-      technologies: ['Rust', 'SEAL', 'Lattice Cryptography', 'SIMD'],
-      achievements: '10x performance improvement over existing solutions',
-      impact: '500+ developers using the library',
+        'Onchain ZK verifiers for the Groth16, Plonk and Bulletproofs proving systems implemented in Aiken.',
+      technologies: ['Aiken', 'Cardano', 'Groth 16', 'Plonk', 'Bulletproofs'],
       status: 'Open Source',
-      github: 'https://github.com/example/fhe-lib',
-    },
-    {
-      name: 'Multi-Party Computation Protocol',
-      description:
-        'Secure MPC implementation for private set intersection and collaborative computation without revealing inputs.',
-      technologies: ['Go', 'Garbled Circuits', 'Oblivious Transfer', 'TLS'],
-      achievements: 'Handles 1M+ element sets, sub-second computation',
-      impact: 'Deployed in financial institutions',
-      status: 'Enterprise',
-      github: 'https://github.com/example/mpc-protocol',
-    },
-    {
-      name: 'Threshold Signature Scheme',
-      description:
-        "Distributed key generation and signing system using Shamir's secret sharing for enhanced security.",
-      technologies: ['elliptic-curves', 'BLS Signatures', 'Rust', 'Network'],
-      achievements: 'Byzantine fault tolerance, 99.99% uptime',
-      impact: 'Securing $10M+ in digital assets',
-      status: 'Production',
-      github: 'https://github.com/example/threshold-sigs',
+      github: 'https://github.com/ADAOcommunity/zk',
     },
   ]
 
@@ -102,21 +70,6 @@ function CryptographyWork() {
               <p className="text-gray-300 mb-4 leading-relaxed">
                 {project.description}
               </p>
-
-              <div className="grid md:grid-cols-2 gap-4 mb-4">
-                <div>
-                  <p className="text-pink-300 font-medium mb-1">
-                    Key Achievement:
-                  </p>
-                  <p className="text-gray-400">{project.achievements}</p>
-                </div>
-                <div>
-                  <p className="text-red-300 font-medium mb-1">
-                    Real-world Impact:
-                  </p>
-                  <p className="text-gray-400">{project.impact}</p>
-                </div>
-              </div>
 
               <div className="flex flex-wrap gap-2">
                 {project.technologies.map((tech) => (

@@ -2,13 +2,16 @@ import { Link } from '@tanstack/react-router'
 
 import { useState } from 'react'
 import {
+  BriefcaseBusiness,
   ChevronDown,
   ChevronRight,
+  GraduationCap,
   Home,
+  Languages,
+  Lock,
   Menu,
   Network,
-  SquareFunction,
-  StickyNote,
+  PenBox,
   X,
 } from 'lucide-react'
 
@@ -68,7 +71,7 @@ export default function Header() {
           {/* Demo Links Start */}
 
           <Link
-            to="/writings"
+            to="/thoughts"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
             activeProps={{
@@ -76,8 +79,8 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
             }}
           >
-            <SquareFunction size={20} />
-            <span className="font-medium">Writings</span>
+            <PenBox size={20} />
+            <span className="font-medium">My Thoughts</span>
           </Link>
 
           <Link
@@ -89,7 +92,7 @@ export default function Header() {
                 'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
             }}
           >
-            <Network size={20} />
+            <GraduationCap size={20} />
             <span className="font-medium">Qualifications</span>
           </Link>
 
@@ -103,7 +106,7 @@ export default function Header() {
                   'flex-1 flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
               }}
             >
-              <StickyNote size={20} />
+              <BriefcaseBusiness size={20} />
               <span className="font-medium">My Work</span>
             </Link>
             <button
@@ -133,21 +136,8 @@ export default function Header() {
                     'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
                 }}
               >
-                <SquareFunction size={20} />
+                <Network size={20} />
                 <span className="font-medium">Blockchain</span>
-              </Link>
-
-              <Link
-                to="/work/language-software"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
-                activeProps={{
-                  className:
-                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
-                }}
-              >
-                <StickyNote size={20} />
-                <span className="font-medium">Language Software</span>
               </Link>
 
               <Link
@@ -159,8 +149,21 @@ export default function Header() {
                     'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
                 }}
               >
-                <StickyNote size={20} />
+                <Lock size={20} />
                 <span className="font-medium">Cryptography</span>
+              </Link>
+
+              <Link
+                to="/work/language-software"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-800 transition-colors mb-2"
+                activeProps={{
+                  className:
+                    'flex items-center gap-3 p-3 rounded-lg bg-cyan-600 hover:bg-cyan-700 transition-colors mb-2',
+                }}
+              >
+                <Languages size={20} />
+                <span className="font-medium">Language Software</span>
               </Link>
             </div>
           )}
